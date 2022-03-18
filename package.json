@@ -5,10 +5,19 @@
 	"main": "dist/bot.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TheEdoRan/hidewallbot"
+		"url": "git+https://github.com/TheEdoRan/hidewallbot.git"
 	},
+	"bugs": {
+		"url": "https://github.com/theedoran/hidewallbot/issues"
+	},
+	"homepage": "https://github.com/theedoran/hidewallbot#readme",
+	"keywords": [
+		"telegram",
+		"bot",
+		"12ft",
+		"paywall"
+	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"prepare": "husky install",
 		"dev": "ts-node-dev --rs ./src/bot.ts",
 		"compile": "tsc",
