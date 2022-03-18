@@ -1,0 +1,46 @@
+{
+	"name": "hidewallbot",
+	"version": "1.0.0",
+	"description": "Telegram bots that uses 12ft to generate paywall-free links",
+	"main": "dist/bot.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TheEdoRan/hidewallbot"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky install",
+		"dev": "ts-node-dev --rs ./src/bot.ts",
+		"compile": "tsc",
+		"commitlint": "commitlint",
+		"lint-staged": "lint-staged",
+		"typecheck": "tsc --noemit",
+		"lint": "npm run typecheck && eslint . --ext .js,.ts --no-cache",
+		"lint:fix": "npm run lint -- --fix"
+	},
+	"author": "TheEdoRan",
+	"license": "MIT",
+	"devDependencies": {
+		"@commitlint/cli": "^16.2.3",
+		"@commitlint/config-conventional": "^16.2.1",
+		"@theedoran/eslint-config": "^1.0.1",
+		"@types/module-alias": "^2.0.1",
+		"@types/node": "^17.0.21",
+		"@types/valid-url": "^1.0.3",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.7",
+		"ts-node-dev": "^1.1.8",
+		"typescript": "^4.6.2"
+	},
+	"dependencies": {
+		"axios": "^0.26.1",
+		"dotenv": "^16.0.0",
+		"metascraper": "^5.26.0",
+		"metascraper-image": "^5.26.0",
+		"metascraper-title": "^5.26.0",
+		"module-alias": "^2.2.2",
+		"telegraf": "^4.7.0",
+		"typegram": "^3.8.0",
+		"valid-url": "^1.0.9"
+	}
+}

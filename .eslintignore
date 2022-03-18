@@ -1,0 +1,9 @@
+node_modules
+yarn.lock
+dist
+package-lock.json
+**/*.test.js
+pages/_error.jsx
+coverage
+**/*.config.js
+**/*.d.ts

@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+node_modules
+yarn.lock
+dist
+.env*
+.npmrc
+
+# Exclude .example files
+!*.example
+
+# ESLint
+.eslintcache
+
+# TypeScript stuff
+tsconfig.tsbuildinfo

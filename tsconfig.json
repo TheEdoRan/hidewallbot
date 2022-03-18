@@ -1,0 +1,29 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "CommonJS",
+		"lib": [],
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"outDir": "./dist",
+		"moduleResolution": "node",
+		"removeComments": true,
+		"noImplicitAny": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"useUnknownInCatchVariables": false,
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitThis": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"baseUrl": "./src",
+		"paths": {
+			"@/*": ["./*"]
+		}
+	},
+	"exclude": ["node_modules"],
+	"include": ["./src/**/*.ts"]
+}
