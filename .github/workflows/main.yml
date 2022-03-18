@@ -1,0 +1,19 @@
+name: Deploy to fly.io
+
+on:
+  push:
+    branches:
+      - main
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+jobs:
+  deploy:
+    name: Deploy bot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Deploy bot
+        uses: superfly/flyctl-actions@1.1
+        with:
+          args: "deploy --detach"
