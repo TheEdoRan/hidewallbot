@@ -1,6 +1,6 @@
-import { Telegraf } from "telegraf";
-
 import { buildCommandMarkupKeyboard } from "./utils/markupKeyboard";
+
+import type { Telegraf } from "telegraf";
 
 export const handleStartHelpCommand = (bot: Telegraf) => {
 	bot.command(["start", "help"], (ctx) => {
@@ -14,10 +14,12 @@ export const handleStartHelpCommand = (bot: Telegraf) => {
 		text +=
 			'This bot is free and open source, licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. You can explore and contribute to the source code by tapping the button below.';
 
-		ctx.reply(text, {
-			parse_mode: "HTML",
-			reply_to_message_id: ctx.message.message_id,
-			...buildCommandMarkupKeyboard(),
-		});
+		return ctx
+			.reply(text, {
+				parse_mode: "HTML",
+				reply_to_message_id: ctx.message.message_id,
+				...buildCommandMarkupKeyboard(),
+			})
+			.catch(() => undefined);
 	});
 };

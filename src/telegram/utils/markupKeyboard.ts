@@ -1,6 +1,6 @@
 import { Markup } from "telegraf";
 
-import { proxyURL } from "@/url";
+import { proxyURL } from "../../url";
 
 export const buildArticleMarkupKeyboard = (query: string) =>
 	Markup.inlineKeyboard([

@@ -18,11 +18,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"baseUrl": "./src",
-		"paths": {
-			"@/*": ["./*"]
-		}
+		"resolveJsonModule": true
 	},
 	"exclude": ["node_modules"],
 	"include": ["./src/**/*.ts"]

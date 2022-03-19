@@ -1,5 +1,3 @@
-import "./utils/resolve";
-
 import { createServer } from "http";
 
 import { Telegraf } from "telegraf";

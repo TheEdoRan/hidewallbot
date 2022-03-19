@@ -4,14 +4,14 @@ import axios from "axios";
 import createMetascraper from "metascraper";
 import metaImage from "metascraper-image";
 import metaTitle from "metascraper-title";
-import { Telegraf } from "telegraf";
 
 import { buildArticleMarkupKeyboard } from "./utils/markupKeyboard";
 import { getMessageText } from "./utils/messageText";
 
-import { validURL } from "../url";
+import { isValidURL } from "../url";
 import { ENV_DEV } from "../utils/envs";
 
+import type { Telegraf } from "telegraf";
 import type { InlineQueryResultArticle } from "typegram";
 
 const metascraper = createMetascraper([metaTitle(), metaImage()]);
@@ -20,7 +20,7 @@ export const handleInlineQuery = (bot: Telegraf) => {
 	bot.on("inline_query", async (ctx) => {
 		const { query } = ctx.inlineQuery;
 
-		if (!validURL(query)) {
+		if (!isValidURL(query)) {
 			return;
 		}
 
