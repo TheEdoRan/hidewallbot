@@ -12,7 +12,7 @@ export const handleStartHelpCommand = (bot: Telegraf) => {
 		text += "<pre>@hidewallbot [URL]</pre>\n\n";
 		text += "<b>Contribute</b>  📖\n";
 		text +=
-			'This bot is free and open source, licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. You can explore and contribute to the source code by tapping on the button below.';
+			'This bot is free and open source, licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>. You can explore and contribute to the source code by tapping the button below.';
 
 		ctx.reply(text, {
 			parse_mode: "HTML",
