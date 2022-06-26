@@ -19,6 +19,5 @@ COPY --from=compiler /usr/src/app/dist /usr/src/app
 FROM gcr.io/distroless/nodejs:16 AS runner
 WORKDIR /app
 COPY --from=installer /usr/src/app /app
-EXPOSE 8080
 USER nonroot:nonroot
 CMD ["bot.js"]

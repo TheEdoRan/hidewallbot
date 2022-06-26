@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  hidewallbot:
+    build:
+      context: .
+    init: true
+    image: hidewallbot
+    container_name: hidewallbot
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+    env_file: .env
+    restart: unless-stopped

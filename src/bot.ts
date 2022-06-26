@@ -1,5 +1,3 @@
-import { createServer } from "http";
-
 import { Telegraf } from "telegraf";
 
 import { handleInlineQuery } from "./telegram/handleInlineQuery";
@@ -20,20 +18,10 @@ handleInlineQuery(bot);
 
 bot.launch();
 
-// fly healthcheck.
-const server = createServer((_, res) => {
-	res.writeHead(200);
-	res.end("ok");
-});
-
-server.listen(8080);
-
 // Enable graceful stop.
 process.once("SIGINT", () => {
 	bot.stop("SIGINT");
-	server.close();
 });
 process.once("SIGTERM", () => {
 	bot.stop("SIGTERM");
-	server.close();
 });
