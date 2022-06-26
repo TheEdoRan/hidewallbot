@@ -4,8 +4,7 @@ import type { Telegraf } from "telegraf";
 
 export const handleStartHelpCommand = (bot: Telegraf) => {
 	bot.command(["start", "help"], (ctx) => {
-		let text =
-			"This bot removes paywall from articles, using the <b>12ft</b> service.\n\n";
+		let text = "This bot removes paywall from articles, using the <b>12ft</b> service.\n\n";
 		text += "<b>Usage</b> ❓\n";
 		text +=
 			"You can use this tool by pasting a valid link in this bot's private chat, or in any chat you want, using inline mode, like this:\n\n";

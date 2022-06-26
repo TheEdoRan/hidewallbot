@@ -1,2 +1,1 @@
-export const getMessageText = (URL: string) =>
-	`<a href="${URL}">Original link</a>`;
+export const getMessageText = (URL: string) => `<a href="${URL}">Original link</a>`;
