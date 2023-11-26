@@ -17,44 +17,44 @@ import type { InlineQueryResultArticle } from "typegram";
 const metascraper = createMetascraper([metaTitle(), metaImage()]);
 
 export const handleInlineQuery = (bot: Telegraf) => {
-	bot.on("inline_query", async (ctx) => {
-		const { query } = ctx.inlineQuery;
+  bot.on("inline_query", async (ctx) => {
+    const { query } = ctx.inlineQuery;
 
-		if (!isValidURL(query)) {
-			return;
-		}
+    if (!isValidURL(query)) {
+      return;
+    }
 
-		try {
-			const { data: html } = await axios.get(query);
+    try {
+      const { data: html } = await axios.get(query);
 
-			const { title, image } = await metascraper({
-				html,
-				url: query,
-			});
+      const { title, image } = await metascraper({
+        html,
+        url: query,
+      });
 
-			const queryHash = crypto.createHash("md5").update(query).digest("hex");
+      const queryHash = crypto.createHash("md5").update(query).digest("hex");
 
-			const result: InlineQueryResultArticle = {
-				type: "article",
-				id: queryHash,
-				title: title || "Title unavailable",
-				description: "Tap here to generate link",
-				thumb_url: image || "",
-				input_message_content: {
-					message_text: getMessageText(query),
-					parse_mode: "HTML",
-				},
-				...buildArticleMarkupKeyboard(query),
-			};
+      const result: InlineQueryResultArticle = {
+        type: "article",
+        id: queryHash,
+        title: title || "Title unavailable",
+        description: "Tap here to generate links",
+        thumbnail_url: image || "",
+        input_message_content: {
+          message_text: getMessageText(query),
+          parse_mode: "HTML",
+        },
+        ...buildArticleMarkupKeyboard(query),
+      };
 
-			return await ctx
-				.answerInlineQuery([result], {
-					is_personal: false,
-					cache_time: ENV_DEV ? 0 : 60 * 60 * 4,
-				})
-				.catch(() => undefined);
-		} catch (_) {
-			return null;
-		}
-	});
+      return await ctx
+        .answerInlineQuery([result], {
+          is_personal: false,
+          cache_time: ENV_DEV ? 0 : 60 * 60 * 4,
+        })
+        .catch(console.error);
+    } catch (_) {
+      return null;
+    }
+  });
 };

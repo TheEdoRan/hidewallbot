@@ -1,34 +1,34 @@
 import type { Context, MiddlewareFn } from "telegraf";
-import type { Message, Update } from "typegram";
+import type { Message } from "typegram";
 
-export const logger = (): MiddlewareFn<Context<Update>> => (ctx, next) => {
-	const textMessage = ctx.message as Message.TextMessage;
+export const logger = (): MiddlewareFn<Context<any>> => (ctx, next) => {
+  const textMessage = ctx.message as Message.TextMessage;
 
-	if (!ctx.from || (!textMessage && !ctx.inlineQuery)) {
-		return next();
-	}
+  if (!ctx.from || (!textMessage && !ctx.inlineQuery)) {
+    return next();
+  }
 
-	// Try to get message info.
-	const msgInfo = (textMessage?.text || ctx.inlineQuery?.query)?.toString();
+  // Try to get message info.
+  const msgInfo = (textMessage?.text || ctx.inlineQuery?.query)?.toString();
 
-	// If empty string, skip logging.
-	if (!msgInfo) {
-		return next();
-	}
+  // If empty string, skip logging.
+  if (!msgInfo) {
+    return next();
+  }
 
-	const { first_name: firstName, last_name: lastName, username } = ctx.from;
+  const { first_name: firstName, last_name: lastName, username } = ctx.from;
 
-	// User info.
-	let format = firstName;
-	format += lastName ? ` ${lastName}` : "";
-	format += username ? ` [@${username}]` : "";
-	format += ": ";
+  // User info.
+  let format = firstName;
+  format += lastName ? ` ${lastName}` : "";
+  format += username ? ` [@${username}]` : "";
+  format += ": ";
 
-	// Message info.
-	format += msgInfo;
+  // Message info.
+  format += msgInfo;
 
-	// Log to console.
-	console.log(format);
+  // Log to console.
+  console.log(format);
 
-	return next();
+  return next();
 };

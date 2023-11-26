@@ -9,19 +9,19 @@ import { ENV_BOT_TOKEN, ENV_DEBUG } from "./utils/envs";
 const bot = new Telegraf(ENV_BOT_TOKEN);
 
 if (ENV_DEBUG) {
-	bot.use(logger());
+  bot.use(logger());
 }
 
 handleStartHelpCommand(bot);
 handleTextMessage(bot);
 handleInlineQuery(bot);
 
-bot.launch();
+bot.launch().catch(console.error);
 
 // Enable graceful stop.
 process.once("SIGINT", () => {
-	bot.stop("SIGINT");
+  bot.stop("SIGINT");
 });
 process.once("SIGTERM", () => {
-	bot.stop("SIGTERM");
+  bot.stop("SIGTERM");
 });

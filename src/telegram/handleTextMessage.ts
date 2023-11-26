@@ -7,25 +7,27 @@ import type { Context, Telegraf } from "telegraf";
 
 // Private chat only middleware.
 const isPrivateChat = (ctx: Context, next: () => Promise<void>) => {
-	if (ctx.chat?.type === "private") {
-		next();
-	}
+  if (ctx.chat?.type === "private") {
+    return next();
+  }
+
+  return;
 };
 
 export const handleTextMessage = (bot: Telegraf) => {
-	bot.on("text", isPrivateChat, (ctx) => {
-		const { text } = ctx.message;
+  bot.on("text", isPrivateChat, (ctx) => {
+    const { text } = ctx.message;
 
-		if (!isValidURL(text)) {
-			return;
-		}
+    if (!isValidURL(text)) {
+      return;
+    }
 
-		return ctx
-			.reply(getMessageText(text), {
-				parse_mode: "HTML",
-				reply_to_message_id: ctx.message.message_id,
-				...buildArticleMarkupKeyboard(text),
-			})
-			.catch(() => undefined);
-	});
+    return ctx
+      .reply(getMessageText(text), {
+        parse_mode: "HTML",
+        reply_to_message_id: ctx.message.message_id,
+        ...buildArticleMarkupKeyboard(text),
+      })
+      .catch(console.error);
+  });
 };
