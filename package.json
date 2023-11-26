@@ -14,40 +14,46 @@
 	"keywords": [
 		"telegram",
 		"bot",
+		"1ft",
 		"12ft",
 		"paywall"
 	],
 	"scripts": {
 		"prepare": "husky install",
-		"dev": "ts-node-dev --rs ./src/bot.ts",
+		"dev": "tsx ./src/bot.ts",
 		"compile": "tsc",
 		"commitlint": "commitlint",
 		"lint-staged": "lint-staged",
-		"typecheck": "tsc --noemit",
+		"typecheck": "tsc --noEmit",
 		"lint": "npm run typecheck && eslint . --ext .js,.ts --no-cache",
 		"lint:fix": "npm run lint -- --fix"
 	},
 	"author": "TheEdoRan",
 	"license": "MIT",
 	"devDependencies": {
-		"@commitlint/cli": "^17.4.4",
-		"@commitlint/config-conventional": "^17.4.4",
-		"@theedoran/eslint-config": "^1.0.8",
-		"@types/node": "^18.14.2",
-		"@types/valid-url": "^1.0.4",
+		"@commitlint/cli": "^18.4.3",
+		"@commitlint/config-conventional": "^18.4.3",
+		"@types/node": "^20.10.0",
+		"@types/valid-url": "^1.0.7",
+		"@typescript-eslint/eslint-plugin": "^6.12.0",
+		"@typescript-eslint/parser": "^6.12.0",
+		"eslint": "^8.54.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
 		"husky": "^8.0.3",
-		"lint-staged": "^13.1.2",
-		"ts-node-dev": "^2.0.0",
-		"typescript": "^4.9.5"
+		"lint-staged": "^15.1.0",
+		"prettier": "^3.1.0",
+		"tsx": "^4.5.0",
+		"typescript": "^5.3.2"
 	},
 	"dependencies": {
-		"axios": "^1.3.4",
-		"dotenv": "^16.0.3",
-		"metascraper": "^5.33.8",
-		"metascraper-image": "^5.33.7",
-		"metascraper-title": "^5.33.7",
-		"telegraf": "^4.11.2",
-		"typegram": "^4.3.0",
+		"axios": "^1.6.2",
+		"dotenv": "^16.3.1",
+		"metascraper": "^5.39.0",
+		"metascraper-image": "^5.39.0",
+		"metascraper-title": "^5.39.0",
+		"telegraf": "^4.15.0",
+		"typegram": "^5.2.0",
 		"valid-url": "^1.0.9"
 	}
 }
