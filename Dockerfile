@@ -1,5 +1,5 @@
 # Compile
-FROM node:20-alpine AS compiler
+FROM node:20 AS compiler
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
@@ -7,17 +7,12 @@ COPY tsconfig.json ./
 COPY src src
 RUN npm run compile
 
-# Install
-FROM node:20-alpine AS installer
+# Run
+FROM node:20 AS runner
 ENV NODE_ENV=production
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci --ignore-scripts
 COPY --from=compiler /usr/src/app/dist /usr/src/app
-
-# Run
-FROM gcr.io/distroless/nodejs:20 AS runner
-WORKDIR /app
-COPY --from=installer /usr/src/app /app
-USER nonroot:nonroot
-CMD ["bot.js"]
+USER node:node
+CMD ["node", "bot.js"]
